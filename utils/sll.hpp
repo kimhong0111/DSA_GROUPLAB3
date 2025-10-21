@@ -9,14 +9,14 @@ struct Node
     Node *next;
 };
 
-class LinkedList
+class singlyLinkedList
 {
 private:
     Node *head, *tail, *current;
     int size;
 
 public:
-    LinkedList()
+    singlyLinkedList()
     {
         head = nullptr;
         size = 0;
