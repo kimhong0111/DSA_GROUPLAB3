@@ -2,14 +2,15 @@
 #include <string>
 using namespace std;
 
-struct Node {
+struct NodeCsll
+{
     int value;
-    Node *next;
+    NodeCsll *next;
 };
 
 class circullarSinglyLinkedList {
 private:
-    Node *head, *tail, *current;
+    NodeCsll *head, *tail, *current;
     int size;
 
 public:
@@ -33,7 +34,7 @@ public:
     }
 
     void insertFront(int value) {
-        Node *newNode = new Node{value, nullptr};
+        NodeCsll *newNode = new NodeCsll{value, nullptr};
         if (size == 0) {
             head = tail = newNode;
             tail->next = head;
@@ -46,7 +47,7 @@ public:
     }
 
     void insertBack(int value) {
-        Node *newNode = new Node{value, nullptr};
+        NodeCsll *newNode = new NodeCsll{value, nullptr};
         if (size == 0) {
             head = tail = newNode;
             tail->next = head;
@@ -69,7 +70,7 @@ public:
         }
 
         _traverseTill(pos);
-        Node *newNode = new Node{value, current->next};
+        NodeCsll *newNode = new NodeCsll{value, current->next};
         current->next = newNode;
         size++;
     }
@@ -80,7 +81,7 @@ public:
             return;
         }
 
-        Node *temp = head;
+        NodeCsll *temp = head;
         if (size == 1) {
             head = tail = nullptr;
         } else {
@@ -103,7 +104,7 @@ public:
         }
 
         _traverseTill(size - 1); // current at node before tail
-        Node *temp = tail;
+        NodeCsll *temp = tail;
         tail = current;
         tail->next = head;
         delete temp;
@@ -123,7 +124,7 @@ public:
 
         int mid = size / 2;
         _traverseTill(mid);
-        Node *temp = current->next;
+        NodeCsll *temp = current->next;
         current->next = temp->next;
         if (temp == tail)
             tail = current;
@@ -168,8 +169,8 @@ public:
         if (posFirstNode > posSecNode)
             swap(posFirstNode, posSecNode);
 
-        Node *prev1 = nullptr, *prev2 = nullptr;
-        Node *node1 = head, *node2 = head;
+        NodeCsll *prev1 = nullptr, *prev2 = nullptr;
+        NodeCsll *node1 = head, *node2 = head;
 
         // Find node1 and its previous
         if (posFirstNode != 0)
@@ -196,7 +197,7 @@ public:
             head = node1;
 
         // Swap next pointers
-        Node *temp = node1->next;
+        NodeCsll *temp = node1->next;
         node1->next = node2->next;
         node2->next = temp;
 

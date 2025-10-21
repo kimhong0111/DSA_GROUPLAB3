@@ -3,16 +3,16 @@
 
 using namespace std;
 
-struct Node
+struct NodeSll
 {
     int value;
-    Node *next;
+    NodeSll *next;
 };
 
 class singlyLinkedList
 {
 private:
-    Node *head, *tail, *current;
+    NodeSll *head, *tail, *current;
     int size;
 
 public:
@@ -46,7 +46,7 @@ public:
 
     void insertFront(int value)
     {
-        Node *newNode = new Node{value, nullptr};
+        NodeSll *newNode = new NodeSll{value, nullptr};
         newNode->next = head;
         head = newNode;
         if (size == 0)
@@ -62,7 +62,7 @@ public:
             return;
         }
 
-        Node *newNode = new Node{value, nullptr};
+        NodeSll *newNode = new NodeSll{value, nullptr};
         tail->next = newNode;
         size++;
         tail = newNode;
@@ -83,8 +83,8 @@ public:
             return;
         }
 
-        Node *newNode = new Node{value, nullptr};
-        Node *temp;
+        NodeSll *newNode = new NodeSll{value, nullptr};
+        NodeSll *temp;
         _traverseTill(pos);
         temp = current->next;
         current->next = newNode;
@@ -95,8 +95,8 @@ public:
     void insertMiddle(int value)
     {
         _traverseTill(size / 2);
-        Node *newNode = new Node{value, nullptr};
-        Node *temp;
+        NodeSll *newNode = new NodeSll{value, nullptr};
+        NodeSll *temp;
         temp = current->next;
         current->next = newNode;
         newNode->next = temp;
@@ -111,7 +111,7 @@ public:
             return;
         }
 
-        Node *temp;
+        NodeSll *temp;
         temp = head;
         head = head->next;
         delete temp;
@@ -128,7 +128,7 @@ public:
             return;
         }
 
-        Node *temp;
+        NodeSll *temp;
         temp = tail;
         _traverseTill(size);
         tail = current;
@@ -149,7 +149,7 @@ public:
             return;
         }
 
-        Node *temp;
+        NodeSll *temp;
         _traverseTill(size / 2);
         temp = current->next;
         current->next = temp->next;
@@ -195,8 +195,8 @@ public:
         if (posFirstNode > posSecNode)
             swap(posFirstNode, posSecNode);
 
-        Node *prev1 = nullptr;
-        Node *node1 = head;
+        NodeSll *prev1 = nullptr;
+        NodeSll *node1 = head;
         if (posFirstNode > 0)
         {
             _traverseTill(posFirstNode);
@@ -204,8 +204,8 @@ public:
             node1 = prev1->next;
         }
 
-        Node *prev2 = nullptr;
-        Node *node2 = head;
+        NodeSll *prev2 = nullptr;
+        NodeSll *node2 = head;
         if (posSecNode > 0)
         {
             _traverseTill(posSecNode);
@@ -225,7 +225,7 @@ public:
             head = node1;
 
         // Swap next pointers
-        Node *temp = node1->next;
+        NodeSll *temp = node1->next;
         node1->next = node2->next;
         node2->next = temp;
 
