@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
-using namespace std;
+#include <chrono>
 
+using namespace std;
+using clk = chrono::high_resolution_clock;
 struct NodeCsll
 {
     int value;
@@ -31,6 +33,14 @@ public:
         current = head;
         for (int i = 0; i < pos - 1; i++)
             current = current->next;
+    }
+
+    void _traverseTail(int pos) {
+        tail->next = head;
+        current = head;
+        for (int i=0;i<pos;i++) {
+            current=current->next;
+        }
     }
 
     void insertFront(int value) {
@@ -211,4 +221,15 @@ public:
         tail->next = head;
     }
 
-};  
+};
+
+void csll_observe(circullarSinglyLinkedList* obj, void(circullarSinglyLinkedList::*method)(int value), string msg, int value){
+    auto t0 = clk::now();
+
+    (obj->*method)(value); // perform operation
+
+    auto t1 = clk::now();
+
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(t1 - t0);
+    cout<<msg <<": "<<duration.count() <<" nanosecond(s)" << endl;
+}

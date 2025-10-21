@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
+#include <chrono>
 
 using namespace std;
+using clk = chrono::high_resolution_clock;
 
 struct NodeSll
 {
@@ -31,8 +33,10 @@ public:
     void _travers()
     {
         current = head;
-        while (current->next)
+        while (current->next) {
             current = current->next;
+            if (current==nullptr) current = head;
+        }
     }
 
     void _traverseTill(int pos)
@@ -41,6 +45,7 @@ public:
         for (int i = 0; i < pos - 1; i++)
         {
             current = current->next;
+            if (current==nullptr) current = head;
         }
     }
 
@@ -237,3 +242,14 @@ public:
     }
 
 };
+
+void sll_observe(singlyLinkedList* obj, void(singlyLinkedList::*method)(int value), string msg, int value){
+    auto t0 = clk::now();
+
+    (obj->*method)(value); // perform operation
+
+    auto t1 = clk::now();
+
+    auto duration = chrono::duration_cast<chrono::nanoseconds>(t1 - t0);
+    cout<<msg <<": "<<duration.count() <<" nanosecond(s)" << endl;
+}
