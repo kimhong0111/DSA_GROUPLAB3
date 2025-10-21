@@ -7,13 +7,13 @@ struct Node {
     Node *next;
 };
 
-class LinkedList {
+class circullarSinglyLinkedList {
 private:
     Node *head, *tail, *current;
     int size;
 
 public:
-    LinkedList() {
+    circullarSinglyLinkedList() {
         head = nullptr;
         tail = nullptr;
         size = 0;
