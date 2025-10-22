@@ -23,6 +23,19 @@ public:
         head = nullptr;
         size = 0;
     }
+    ~singlyLinkedList(){
+        clear();
+    }
+
+    void clear(){
+        while(!empty()){
+            deleteFront();
+        }
+    }
+
+    bool empty(){
+        return size==0;
+    }
 
     int getSize() { return size; }
 
