@@ -16,7 +16,7 @@ using clk=chrono::high_resolution_clock;
             l2.insertFront(i+1);
       
          }
-         /*
+         
         // single linkedlist with head only
         cout<<"Remove_front with head only sll"<<endl;
        for(int i=0;i<5;i++){
@@ -34,7 +34,7 @@ using clk=chrono::high_resolution_clock;
 
          for(int i=0;i<5;i++){
              auto t0=clk::now();
-            for(int j=0;j<30;j++){
+            for(int j=0;j<70;j++){
                 l1.insert_front_onlyhead(j+1);
          }
            auto t1=clk::now();
@@ -48,7 +48,7 @@ using clk=chrono::high_resolution_clock;
     
           for(int i=0;i<5;i++){
              auto t0=clk::now();
-            for(int j=0;j<30;j++){
+            for(int j=0;j<70;j++){
                 l1.insert_end_onlyhead(j+1);
          }
            auto t1=clk::now();
@@ -81,7 +81,7 @@ using clk=chrono::high_resolution_clock;
      
                for(int i=0;i<5;i++){
              auto t0=clk::now();
-            for(int j=0;j<30;j++){
+            for(int j=0;j<70;j++){
                 l2.insertFront(j+1);
          }
            auto t1=clk::now();
@@ -109,7 +109,7 @@ using clk=chrono::high_resolution_clock;
 
                for(int i=0;i<5;i++){
              auto t0=clk::now();
-            for(int j=0;j<30;j++){
+            for(int j=0;j<70;j++){
                 l2.insertBack(j+1);
          }
            auto t1=clk::now();
@@ -118,7 +118,7 @@ using clk=chrono::high_resolution_clock;
         }
                 cout<<endl;    
 
-   */
+   
    
 
           cout<<"DeleteBack with head + tail sll"<<endl;
@@ -137,7 +137,7 @@ using clk=chrono::high_resolution_clock;
                
        
         doublyLinkedList dl1;
-         for(int i=0;i<200;i++){
+         for(int i=0;i<1000;i++){
             dl1.insertFront(i+1);
          }
             
