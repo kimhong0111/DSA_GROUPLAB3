@@ -241,6 +241,23 @@ public:
             tail = node2;
     }
 
+    void rotateRight(int k) {
+        if (size == 0 || k % size == 0) return;
+
+        k = k % size;
+        int splitPoint = size - k - 1;
+
+        NodeSll *newTail = head;
+        for (int i = 0; i < splitPoint; i++)
+            newTail = newTail->next;
+
+        NodeSll *newHead = newTail->next;
+        tail->next = head;
+        newTail->next = nullptr; 
+        head = newHead;
+        tail = newTail;
+    }
+
 };
 
 void sll_observe(singlyLinkedList* obj, void(singlyLinkedList::*method)(int value), string msg, int value){

@@ -221,7 +221,17 @@ public:
         tail->next = head;
     }
 
-};
+    void rotateRight(int k) {
+        if (size == 0 || k % size == 0) return;
+        k = k % size;
+        int steps = size - k;
+
+        for (int i = 0; i < steps; i++)
+            tail = tail->next;   
+        head = tail->next;       
+    }
+
+};  
 
 void csll_observe(circullarSinglyLinkedList* obj, void(circullarSinglyLinkedList::*method)(int value), string msg, int value){
     auto t0 = clk::now();
