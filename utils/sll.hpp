@@ -127,17 +127,21 @@ public:
 
     void deleteEnd()
     {
-        if (head == 0)
+        if (size==0)
         {
             cout << "The list is empty" << endl;
             return;
         }
-
+        current=head;
         NodeSll *temp;
         temp = tail;
-        _traverseTill(size);
-        tail = current;
+        while(current->next->next!=nullptr){
+            current=current->next;
+        }
         delete temp;
+        tail = current;
+        tail->next=nullptr;
+        --size;
     }
 
     void deleteMiddle()
@@ -256,6 +260,41 @@ public:
         newTail->next = nullptr; 
         head = newHead;
         tail = newTail;
+    }
+    void insert_front_onlyhead(int value){
+        NodeSll* n=new NodeSll{value,nullptr};
+        n->next=head;
+        head=n;
+        size++;
+    }
+
+    void remove_front_onlyhead(){
+        NodeSll* temp=head;
+        head=head->next;
+        delete temp;
+        size--;
+    }
+
+    void remove_end_onlyhead(){
+        current=head;
+        while(current->next->next!=nullptr){
+            current=current->next;
+        }
+        delete current->next;
+        tail=current;
+        tail->next=nullptr;
+        size--;
+
+
+
+    }
+    void insert_end_onlyhead(int value){
+        NodeSll* n=new NodeSll{value,nullptr};
+        _travers();
+          current->next=n;
+          size++;
+
+
     }
 
 };
