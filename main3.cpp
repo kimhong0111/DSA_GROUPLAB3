@@ -10,13 +10,13 @@ using clk = chrono::high_resolution_clock;
 int main() {
     circullarSinglyLinkedList list;
 
-    for(int i = 100; i > 0; i--) list.insertFront(i);
+    for(int i = 100; i > 0; i--) list.insertBack(i);
 
         list.print();
 
     auto t0 = clk::now();
 
-    list.rotateRight(list.getSize()-1);
+    list.rotateRight(list.getSize()/2);
 
     auto t1 = clk::now();
 

@@ -281,19 +281,19 @@ public:
         size++;
     }
 
-    void insertBack(int value){
-        NodeSll* newNode = new NodeSll{value, nullptr};
-        if (!head)
-        {
-            head = tail = newNode;
-        }
-        else
-        {
-            tail->next = newNode;
-            tail = newNode;
-        }
-        size++;
-    }
+    // void insertBack(int value){
+    //     NodeSll* newNode = new NodeSll{value, nullptr};
+    //     if (!head)
+    //     {
+    //         head = tail = newNode;
+    //     }
+    //     else
+    //     {
+    //         tail->next = newNode;
+    //         tail = newNode;
+    //     }
+    //     size++;
+    // }
 
     void eraseGivenNodeWithPrev(NodeSll* prev, NodeSll* node)
     {

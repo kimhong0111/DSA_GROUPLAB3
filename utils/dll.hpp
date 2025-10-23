@@ -319,15 +319,6 @@ public:
         }
     }
 
-    void insertBack(int value)
-    {
-        NodeDll* newNode = new NodeDll{value, nullptr, tail};
-        if (!head) head = newNode;
-        if (tail) tail->next = newNode;
-        tail = newNode;
-        size++;
-    }
-
     void eraseGivenNode(NodeDll* node)
     {
         if (!node) return;
