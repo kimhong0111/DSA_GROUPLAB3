@@ -275,9 +275,7 @@ public:
         tail = newTail;
     }
     void insert_front_onlyhead(int value){
-        NodeSll* n=new NodeSll{value,nullptr};
-        n->next=head;    
-        head=n;
+        head=new NodeSll{value,head};   // so this let new node ->next point to old head and let head=new node
         size++;
     }
 
@@ -347,6 +345,12 @@ public:
           current->next=n;
           size++;
 
+
+    }
+
+    void push(int value){
+        head=new NodeSll{value,head};
+        size++;
 
     }
 
