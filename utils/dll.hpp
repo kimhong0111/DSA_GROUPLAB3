@@ -329,4 +329,39 @@ public:
         delete node;
         size--;
     }
+
+    void push(int value){
+     
+        NodeDll *newNode = new NodeDll{value, nullptr, nullptr};
+        
+        if (size==0)
+        {
+            head = tail = newNode;
+        }
+        else
+        {
+            newNode->next = head;
+            head->prev = newNode;
+            head = newNode;
+        }
+        size++;
+    }
+
+
+    void pop(){
+
+        if(size==0){
+            return   ;
+        }
+
+        NodeDll * temp=head;
+        head=head->next;
+        if(head!=nullptr){
+            head->prev=nullptr;
+        }
+        else{
+            tail=nullptr;
+        }
+        delete temp;
+    }
 };

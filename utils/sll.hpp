@@ -348,9 +348,30 @@ public:
 
     }
 
-    void push(int value){
-        head=new NodeSll{value,head};
+    void push(int value){   // push front
+       NodeSll *newNode = new NodeSll{value, nullptr};
+        newNode->next = head;
+        head = newNode;
+        if (head!=nullptr)
+            tail = head;
         size++;
+    }
+
+    
+
+
+    void pop(){     // pop front
+      if(empty()){
+        return;
+      }
+      NodeSll*temp=head;
+         head=head->next;
+          delete temp;
+          size--;
+          if(head==nullptr){
+            tail=nullptr;
+         }
+
 
     }
 
