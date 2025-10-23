@@ -276,10 +276,50 @@ public:
     }
     void insert_front_onlyhead(int value){
         NodeSll* n=new NodeSll{value,nullptr};
-        n->next=head;
+        n->next=head;    
         head=n;
         size++;
     }
+
+    void insertBack(int value){
+        NodeSll* newNode = new NodeSll{value, nullptr};
+        if (!head)
+        {
+            head = tail = newNode;
+        }
+        else
+        {
+            tail->next = newNode;
+            tail = newNode;
+        }
+        size++;
+    }
+
+    void eraseGivenNodeWithPrev(NodeSll* prev, NodeSll* node)
+    {
+        if (!node) return;
+        if (!prev) head = node->next;
+        else prev->next = node->next;
+        if (node == tail) tail = prev;
+        delete node;
+        size--;
+    }
+
+    void eraseGivenNodeNoPrev(NodeSll* node)
+    {
+        if (!node || !head) return;
+        if (node == head) { head = head->next; delete node; size--; return; }
+        NodeSll* cur = head;
+        while (cur && cur->next != node) cur = cur->next;
+        if (cur)
+        {
+            cur->next = node->next;
+            if (node == tail) tail = cur;
+            delete node;
+            size--;
+        }
+    }
+
 
     void remove_front_onlyhead(){
         NodeSll* temp=head;
@@ -309,6 +349,8 @@ public:
 
 
     }
+
+    
 
 };
 
