@@ -278,6 +278,27 @@ public:
         head=new NodeSll{value,head};   // so this let new node ->next point to old head and let head=new node
         size++;
     }
+    
+    void undoHistory(int n) {
+        head = nullptr;
+        for (int i=0;i<n;i++) {
+            if (i%5==4&&head) {
+                NodeSll *temp = head;
+                head = temp->next;
+                delete temp;
+            } else {
+                NodeSll *node = new NodeSll;
+                node->value = i;
+                node->next = head;
+                head = node;
+            }
+        }
+        while (head) {
+            NodeSll *temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
 
     // void insertBack(int value){
     //     NodeSll* newNode = new NodeSll{value, nullptr};
